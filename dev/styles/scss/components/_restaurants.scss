@@ -1,0 +1,11 @@
+.restaurant img {
+    height: 30rem;
+    width: auto;
+    max-width: 100rem;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.restaurant {
+    display: flex;
+    flex-direction: column;
+}

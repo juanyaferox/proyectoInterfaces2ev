@@ -1,0 +1,11 @@
+// components/_howarrive.scss
+@use "../abstracts/variables" as global;
+
+#map {
+  height: 500px;
+  width: 100%;
+  border-color: global.$primary-color;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 10px;
+}

@@ -1,0 +1,40 @@
+// components/_footer.scss
+@use "../abstracts/variables" as global;
+
+/** Botón de cambiar de tema **/
+#fixedButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: global.$primary-color;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+  z-index: 2;
+
+  &:hover {
+    background-color: global.$secondary-color;
+  }
+}
+
+/** Pie de página **/
+footer {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-start;
+  background-color: global.$primary-color;
+  color: global.$secondary-color;
+  text-align: center;
+  padding: 10px;
+  width: 100%;
+  overflow-x: hidden;
+
+  p {
+    padding-left: 2rem;
+  }
+}

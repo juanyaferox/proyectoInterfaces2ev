@@ -1,0 +1,189 @@
+// components/_index.scss
+@use "../abstracts/variables" as global;
+
+/** Texto sobre ribadeo **/
+.discoverRib,
+.discoverRib2 {
+  display: flex;
+  border-left: 5px solid global.$primary-color;
+  border-right: 5px solid global.$primary-color;
+  padding-left: 15px;
+  padding-right: 15px;
+  flex-direction: column;
+  align-items: center;
+  font-size: xx-large;
+  margin-bottom: 1rem;
+}
+
+.discoverRib2 {
+  margin-top: 11rem;
+  margin-bottom: 0;
+}
+
+.whatIs,
+.whyIsEspecial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.whyIsEspecial {
+  margin-top: -10rem;
+}
+
+.especialP {
+  padding-top: 2rem;
+  font-size: larger;
+}
+
+/** Grid de razones **/
+.gridReasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+  margin-right: -10%;
+  margin-left: -10%;
+}
+
+@media (max-width: 1028px) {
+  .gridReasons {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 1rem;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+.gridReasons div {
+  color: global.$primary-color;
+  background-color: global.$color-grid;
+  padding: 20px;
+  border: 2px solid global.$primary-color;
+  border-radius: 2%;
+  text-align: start;
+
+  &::first-line {
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+/** Imágenes de Ribadeo **/
+.image-column {
+  padding-top: 2rem;
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.image-column img {
+  position: relative;
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: -140px;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+.image-column img:nth-child(odd) {
+  left: -35%;
+  transform: translateX(-10%);
+}
+
+.image-column img:nth-child(even) {
+  left: 35%;
+  transform: translateX(10%);
+}
+
+.image-column img:hover {
+  transform: scale(1.2);
+  z-index: 9999;
+}
+
+@media (max-width: 1028px) {
+  .image-column img {
+    width: 140%;
+  }
+  .image-column img:nth-child(odd) {
+    left: -65%;
+    transform: translateY(30%);
+  }
+  .image-column img:nth-child(1) {
+    left: -65%;
+    transform: translateY(-10%);
+  }
+  .image-column img:nth-child(even) {
+    left: 15%;
+    transform: translateX(10%);
+  }
+  .image-column img:nth-child(2) {
+    left: 15%;
+    transform: translateY(-20%);
+  }
+  .discoverRib2 {
+    margin-top: 13rem;
+  }
+}
+
+/** Formulario **/
+.contactForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid global.$primary-color;
+  border-radius: 5px;
+  background-color: global.$color-grid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 50%;
+  margin: 2rem auto;
+}
+
+.contactForm h2 {
+  font-size: 2rem;
+  color: global.$primary-color;
+  margin-bottom: 1rem;
+}
+
+.contactForm label {
+  font-size: 1rem;
+  color: global.$primary-color;
+}
+
+.contactForm input[type="text"],
+.contactForm input[type="email"],
+.contactForm input[type="tel"],
+.contactForm select,
+.contactForm textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid global.$primary-color;
+  border-radius: 5px;
+}
+
+.contactForm input[type="radio"] {
+  margin-right: 0.5rem;
+}
+
+.contactForm input[type="submit"] {
+  background-color: global.$primary-color;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contactForm input[type="submit"]:hover {
+  background-color: global.$primary-color-dark;
+}
+
+@media (max-width: 1028px) {
+  .contactForm {
+    width: 80%;
+  }
+}

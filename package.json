@@ -1,0 +1,36 @@
+{
+  "name": "pr09_1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "gulp": "^5.0.0",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-babel": "^8.0.0",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlclean": "^2.7.22",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-if": "^3.0.0",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^10.0.0",
+    "gulp-purgecss": "^7.0.2",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^6.0.0",
+    "gulp-uglify": "^3.0.2",
+    "imagemin": "^9.0.0",
+    "postcss": "^8.5.1",
+    "postcss-cli": "^11.0.0",
+    "sass": "^1.84.0"
+  },
+  "dependencies": {
+    "pr09_1": "file:"
+  }
+}

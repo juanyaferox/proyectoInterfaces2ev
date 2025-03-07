@@ -1,0 +1,40 @@
+// base/_global.scss
+@use "../abstracts/variables" as global;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: global.$font-family-alt;
+  color: global.$primary-color;
+  background-color: global.$secondary-color;
+  overflow-x: hidden;
+}
+
+main {
+  padding: 20px;
+  padding-top: 2rem;
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: larger;
+  margin-bottom: 5rem;
+}
+
+h1 {
+  border-left: 5px solid global.$primary-color;
+  padding-left: 15px;
+}
+
+@media (max-width: 768px) {
+  main {
+    margin-left: 5%;
+    margin-right: 5%;
+    font-size: medium;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}

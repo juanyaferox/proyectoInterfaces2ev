@@ -1,0 +1,13 @@
+@use "abstracts/variables";
+@use "base/global";
+@use "components/footer";
+@use "components/header";
+@use "components/howarrive";
+@use "components/index";
+@use "components/places";
+@use "components/restaurants";
+
+:root {
+    --secondary-color: #fff;
+    --color-grid: #e7e7e7a9;
+  }

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <title>Proyecto Entregar</title>
+    <link rel="stylesheet" href="../styles/css/index-styles.css" />
+    <script src="../scripts/scripts.js"></script>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div class="whatIs">
+        <p class="discoverRib">¡Descubre este precioso pueblo costero!</p>
+      </div>
+      <div class="image-column">
+        <img
+          src="https://caminoon.com/wp-content/uploads/2020/08/isla-pancha-ribadeo.jpg"
+        />
+        <img
+          src="https://mediaim.expedia.com/destination/1/66a2717ede33e72f4ba808cde861279c.jpg"
+        />
+        <img
+          src="https://www.dronebydrone.com/notis/1467712956ribadeo-bahia-galicia-drone-dronebydrone.jpg"
+        />
+        <img
+          src="https://imanesdeviaje.com/wp-content/uploads/2020/10/que-ver-en-ribadeo-cargadoiro.jpg"
+        />
+      </div>
+      <div class="whatIs">
+        <p class="discoverRib2">¿Qué es Ribadeo?</p>
+        <p>
+          Ribadeo está situado en el límite Nor-Este de la provincia de Lugo
+          (Galicia). El mar Cantábrico baña nuestras costas y la ría de ribadeo,
+          formada por la desembocadura del río EO, nos separa y une a la vez con
+          la vecina comunidad de Asturias. Esta situación tan particular es la
+          que ha distinguido a Ribadeo con el sobrenombre de PORTA NORTE de
+          Galicia. Por su lado Oeste, Ribadeo limita con el vecino ayuntamiento
+          de Barreiros y por el sur con el de Trabada. Ribadeo cuenta con
+          múltiples atractivos turísticos, comerciales y deportivos como el
+          puerto deportivo de Porcillán (único con Bandera Azul de la provincia
+          de Lugo). <br /><br />
+          La economía se sustenta en el sector servicios, en la villa y la
+          producción agrícola en las parroquias rurales. La villa es un polo de
+          atracción importante de la comarca por ser la mejor equipada y ejerce
+          una importante función comercial, portuaria y de servicios. El puerto
+          comercial mueve cerca de 300.000 Tm en celulosa, arena de mina,
+          magnesita, tablero de aglomerado en cuanto a cargas; maíz, pulpa de
+          remolacha y sal entre las descargas.
+        </p>
+      </div>
+      <div class="whyIsEspecial">
+        <p class="discoverRib2">¿Por qué es tan especial?</p>
+        <p class="especialP">Ribadeo es especial por MUCHOS motivos</p>
+        <div class="gridReasons">
+          <div>
+            Es precioso<br /><br />
+            Sus paisajes naturales y vistas al mar son impresionantes, con
+            acantilados que te dejan sin aliento y playas de arena fina que
+            invitan a relajarse y disfrutar del entorno.
+          </div>
+          <div>
+            Es hermoso<br /><br />
+            La arquitectura tradicional gallega se mezcla con la modernidad,
+            creando un contraste fascinante que se puede apreciar en sus calles,
+            plazas y edificios históricos.
+          </div>
+          <div>
+            Es maravilloso<br /><br />
+            La hospitalidad de su gente te hará sentir como en casa, siempre
+            dispuestos a compartir historias y tradiciones locales que
+            enriquecen la experiencia de cualquier visitante.
+          </div>
+          <div>
+            Es increíble<br />
+            <br />La ría de Ribadeo ofrece actividades acuáticas y paseos
+            inolvidables, desde navegar en kayak hasta disfrutar de un tranquilo
+            paseo en barco, explorando cada rincón de este paraíso natural.
+          </div>
+          <div>
+            Es apasionante<br />
+            <br />Su historia y cultura te atraparán desde el primer momento,
+            con monumentos y museos que narran el pasado glorioso de Ribadeo y
+            su importancia en la región.
+          </div>
+          <div>
+            Es encantador<br /><br />
+            Sus calles empedradas y plazas tienen un encanto único, donde cada
+            esquina revela una nueva sorpresa, ya sea una pequeña tienda
+            artesanal o un café acogedor.
+          </div>
+          <div>
+            Es único<br /><br />
+            La mezcla de mar y montaña crea un entorno incomparable, ofreciendo
+            vistas panorámicas que combinan la serenidad del mar con la
+            majestuosidad de las montañas circundantes.
+          </div>
+          <div>
+            Es cautivador <br />
+            <br />Cada rincón de Ribadeo tiene una historia que contar, desde
+            leyendas de marineros hasta relatos de antiguos comerciantes,
+            haciendo de cada visita una aventura llena de descubrimientos.
+          </div>
+          <!--<div>
+            Es irrepetible<br /><br />
+            No hay otro lugar en el mundo como Ribadeo, donde la belleza
+            natural, la riqueza cultural y la calidez humana se unen para crear
+            una experiencia verdaderamente única e inolvidable.
+          </div>-->
+        </div>
+        <p class="especialP">¿A qué esperas?</p>
+      </div>
+      <div class="contactForm">
+        <h2>Contacto</h2>
+        <form name="contact" method="POST" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" required /><br /><br />
+
+          <label for="email">Correo Electrónico:</label>
+          <input type="email" id="email" name="email" required /><br /><br />
+
+          <label for="phone">Teléfono:</label>
+          <input type="tel" id="phone" name="phone" /><br /><br />
+
+          <label for="subject">Asunto:</label>
+          <select id="subject" name="subject">
+        <option value="Consulta">Consulta</option>
+        <option value="Sugerencia">Sugerencia</option>
+        <option value="Reclamación">Reclamación</option>
+          </select><br /><br />
+
+          <label>Género:</label>
+          <input type="radio" id="male" name="gender" value="male" />
+          <label for="male">Masculino</label>
+          <input type="radio" id="female" name="gender" value="female" />
+          <label for="female">Femenino</label>
+          <input type="radio" id="other" name="gender" value="other" />
+          <label for="other">Otro</label><br /><br />
+
+          <label for="message">Mensaje:</label><br />
+          <textarea id="message" name="message" rows="4" cols="50"></textarea><br /><br />
+
+          <input type="submit" value="Enviar" />
+        </form>
+      </div>
+      
+    </main>
+    <footer></footer>
+  </body>
+</html>
