@@ -140,11 +140,10 @@ header {
         li {
           margin: 10px 0;
           text-align: center;
-
+          
           ul.submenu {
             position: static;
             width: 100%;
-
             flex-direction: column;
             align-items: center;
           }

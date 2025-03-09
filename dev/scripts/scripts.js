@@ -5,9 +5,12 @@ function setDarkMode() {
   const button = document.getElementById("fixedButton");
 
   document.body.style.backgroundColor = "#333333";
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   document.head.appendChild(style);
-  style.sheet.insertRule("#fixedButton:hover { background-color: #333333; }", style.sheet.cssRules.length);
+  style.sheet.insertRule(
+    "#fixedButton:hover { background-color: #333333; }",
+    style.sheet.cssRules.length
+  );
   button.style.color = "white";
   const footer = document.querySelector("footer");
   if (footer) {
@@ -15,11 +18,11 @@ function setDarkMode() {
     footer.style.color = "#ffffff";
   }
   const headerParagraphs = document.querySelectorAll("header p");
-  headerParagraphs.forEach(p => {
-    p.style.color = "#ffffff"
+  headerParagraphs.forEach((p) => {
+    p.style.color = "#ffffff";
   });
   const headerLinks = document.querySelectorAll("header nav ul li a");
-  headerLinks.forEach(link => {
+  headerLinks.forEach((link) => {
     link.style.color = "#ffffff";
   });
   const contactForm = document.querySelector(".contactForm");
@@ -28,7 +31,8 @@ function setDarkMode() {
   }
   const headerImages = document.querySelectorAll("header p img");
   headerImages.forEach((img) => {
-    img.style.filter = "brightness(1.2) saturate(75%) drop-shadow(0 0 0 #333) drop-shadow(0 0 1px #333)";
+    img.style.filter =
+      "brightness(1.2) saturate(75%) drop-shadow(0 0 0 #333) drop-shadow(0 0 1px #333)";
   });
 
   button.removeAttribute("lightmode");
@@ -48,9 +52,12 @@ function setLightMode() {
   const button = document.getElementById("fixedButton");
 
   document.body.style.backgroundColor = "#ffffff";
-  const style = document.createElement('style');
+  const style = document.createElement("style");
   document.head.appendChild(style);
-  style.sheet.insertRule("#fixedButton:hover { background-color: #ffffff; }", style.sheet.cssRules.length);
+  style.sheet.insertRule(
+    "#fixedButton:hover { background-color: #ffffff; }",
+    style.sheet.cssRules.length
+  );
   button.style.color = "#333";
   const footer = document.querySelector("footer");
   if (footer) {
@@ -58,11 +65,11 @@ function setLightMode() {
     footer.style.color = "#333333";
   }
   const headerParagraphs = document.querySelectorAll("header p");
-  headerParagraphs.forEach(p => {
+  headerParagraphs.forEach((p) => {
     p.style.color = "#333333";
   });
   const headerLinks = document.querySelectorAll("header nav ul li a");
-  headerLinks.forEach(link => {
+  headerLinks.forEach((link) => {
     link.style.color = "#333333";
   });
   const contactForm = document.querySelector(".contactForm");
@@ -71,7 +78,8 @@ function setLightMode() {
   }
   const headerImages = document.querySelectorAll("header p img");
   headerImages.forEach((img) => {
-    img.style.filter = "brightness(1.2) saturate(75%) drop-shadow(0 0 0 #ffffff) drop-shadow(0 0 1px #ffffff)";
+    img.style.filter =
+      "brightness(1.2) saturate(75%) drop-shadow(0 0 0 #ffffff) drop-shadow(0 0 1px #ffffff)";
   });
 
   button.setAttribute("lightmode", "");
@@ -83,7 +91,6 @@ function setLightMode() {
 
   document.cookie = "darkmode=false; path=/";
 }
-
 
 /**
  *
@@ -102,8 +109,8 @@ function getCookie(name) {
 }
 
 function loadCSS(href) {
-  const link = document.createElement('link');
-  link.rel = 'stylesheet';
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
   link.href = href;
   document.head.appendChild(link);
 }
@@ -112,32 +119,91 @@ function loadCSS(href) {
  * Función para cargar el head, header, el footer y el boton de hamburguesa
  */
 document.addEventListener("DOMContentLoaded", function () {
-
+  let modalContainer = null;
   // Cargar el header y el boton de hamburguesa
   fetch("../html/header.html")
     .then((response) => response.text())
     .then((data) => {
       document.querySelector("header").innerHTML = data;
 
-      const menuToggle = document.querySelector('.menu-toggle');
+      const menuToggle = document.querySelector(".menu-toggle");
       if (menuToggle) {
-        menuToggle.addEventListener('click', () => {
-        document.querySelector('nav ul').classList.toggle('show');
+        menuToggle.addEventListener("click", () => {
+          document.querySelector("nav ul").classList.toggle("show");
         });
       }
-    });
+      // Evento para el botón del modal
+      const showModalLink = document.querySelector("#showModalLink");
+      if (showModalLink) {
+        showModalLink.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (modalContainer) {
+            modalContainer.classList.add("show");
+            return;
+          }
+
+          fetch("../html/modalRegister.html")
+            .then((response) => response.text())
+            .then((data) => {
+              const tempDiv = document.createElement("div");
+              tempDiv.innerHTML = data;
+              modalContainer = tempDiv.querySelector("#registerModal");
+              document.body.appendChild(modalContainer);
+              modalContainer.classList.add("show");
+
+              const closeBtn = modalContainer.querySelector(".close");
+              closeBtn.addEventListener("click", () => {
+                modalContainer.classList.remove("show");
+              });
+
+              const registerForm =
+                modalContainer.querySelector("#registerForm");
+              const message = modalContainer.querySelector("#message");
+
+              registerForm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const name = registerForm.querySelector("#name").value;
+                const email = registerForm.querySelector("#email").value;
+                const password = registerForm.querySelector("#password").value;
+                const confirmPassword =
+                  registerForm.querySelector("#confirmPassword").value;
+
+                if (!name || !email || !password || !confirmPassword) {
+                  message.textContent = "Todos los campos son obligatorios.";
+                  return;
+                }
+                if (!/\S+@\S+\.\S+/.test(email)) {
+                  message.textContent = "Correo inválido.";
+                  return;
+                }
+                if (password !== confirmPassword) {
+                  message.textContent = "Las contraseñas no coinciden.";
+                  return;
+                }
+                message.textContent = "Registro exitoso.";
+              });
+            })
+            .catch((error) =>
+              console.error("Error al cargar el modal:", error)
+            );
+        });
+      } else {
+        console.error("No se encontró el botón #showModalBtn");
+      }
+    })
+    .catch((error) => console.error("Error al cargar el header:", error));
 
   // Cargar el head
-  fetch('../html/head.html')
-        .then(response => response.text())
-        .then(data => {
-          const head = document.head;
-          const tempDiv = document.createElement('div');
-          tempDiv.innerHTML = data;
-          while (tempDiv.firstChild) {
-              head.appendChild(tempDiv.firstChild);
-          }
-        });
+  fetch("../html/head.html")
+    .then((response) => response.text())
+    .then((data) => {
+      const head = document.head;
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = data;
+      while (tempDiv.firstChild) {
+        head.appendChild(tempDiv.firstChild);
+      }
+    });
 
   // Carga el footer
   fetch("../html/footer.html")
@@ -153,103 +219,133 @@ document.addEventListener("DOMContentLoaded", function () {
       const button = document.getElementById("fixedButton");
       button.addEventListener("click", function () {
         if (button.getAttribute("lightmode") == null) {
-            console.log("a claro");
+          console.log("a claro");
           setLightMode();
         } else {
-            console.log("a oscuro");
+          console.log("a oscuro");
           setDarkMode();
         }
       });
     });
 
-    const imageContainers = document.querySelectorAll('.image-container');
+  const imageContainers = document.querySelectorAll(".image-container");
 
-    imageContainers.forEach(container => {
-        const images = container.querySelectorAll('img');
-        const leftArrow = container.querySelector('.arrow.left');
-        const rightArrow = container.querySelector('.arrow.right');
-        let currentIndex = 0;
+  imageContainers.forEach((container) => {
+    const images = container.querySelectorAll("img");
+    const leftArrow = container.querySelector(".arrow.left");
+    const rightArrow = container.querySelector(".arrow.right");
+    let currentIndex = 0;
 
-        function showImage(index) {
-            images.forEach((img, i) => {
-                img.classList.remove('active', 'next');
-                if (i === index) {
-                    img.classList.add('active');
-                } else if (i === (index + 1) % images.length) {
-                    img.classList.add('next');
-                }
-            });
+    function showImage(index) {
+      images.forEach((img, i) => {
+        img.classList.remove("active", "next");
+        if (i === index) {
+          img.classList.add("active");
+        } else if (i === (index + 1) % images.length) {
+          img.classList.add("next");
         }
-
-        function showNextImage() {
-            currentIndex = (currentIndex + 1) % images.length;
-            showImage(currentIndex);
-        }
-
-        function showPreviousImage() {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            showImage(currentIndex);
-        }
-
-        leftArrow.addEventListener('click', showPreviousImage);
-        rightArrow.addEventListener('click', showNextImage);
-
-        // Inicializar la primera imagen
-        showImage(currentIndex);
-
-        const imageContainers = document.querySelectorAll('.image-container img');
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
-        const closeBtn = document.querySelector('.close');
-         // Para la ventana modal
-         imageContainers.forEach(img => {
-          img.addEventListener('click', function() {
-              modal.classList.add('show');
-              modalImg.src = this.src;
-          });
-
-          closeBtn.addEventListener('click', function() {
-            modal.classList.remove('show');
-        });
-
-        modal.addEventListener('click', function(event) {
-          if (event.target === modal || event.target === modalImg) {
-              modal.classList.remove('show');
-          }
       });
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      showImage(currentIndex);
+    }
+
+    function showPreviousImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      showImage(currentIndex);
+    }
+
+    leftArrow.addEventListener("click", showPreviousImage);
+    rightArrow.addEventListener("click", showNextImage);
+
+    // Inicializar la primera imagen
+    showImage(currentIndex);
+
+    const imageContainers = document.querySelectorAll(".image-container img");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modal-img");
+    const closeBtn = document.querySelector(".close");
+    // Para la ventana modal
+    imageContainers.forEach((img) => {
+      img.addEventListener("click", function () {
+        modal.classList.add("show");
+        modalImg.src = this.src;
       });
 
+      closeBtn.addEventListener("click", function () {
+        modal.classList.remove("show");
+      });
+
+      modal.addEventListener("click", function (event) {
+        if (event.target === modal || event.target === modalImg) {
+          modal.classList.remove("show");
+        }
+      });
     });
-    
+  });
 });
 
 /** API de Google para el google Maps de como llegar */
-(g=>{var h,a,k,p="The Google Maps JavaScript API",c="google",l="importLibrary",q="__ib__",m=document,b=window;b=b[c]||(b[c]={});var d=b.maps||(b.maps={}),r=new Set,e=new URLSearchParams,u=()=>h||(h=new Promise(async(f,n)=>{await (a=m.createElement("script"));e.set("libraries",[...r]+"");for(k in g)e.set(k.replace(/[A-Z]/g,t=>"_"+t[0].toLowerCase()),g[k]);e.set("callback",c+".maps."+q);a.src=`https://maps.${
-  c}apis.com/maps/api/js?`+e;d[q]=f;a.onerror=()=>h=n(Error(p+" could not load."));a.nonce=m.querySelector("script[nonce]")?.nonce||"";m.head.append(a)}));d[l]?console.warn(p+" only loads once. Ignoring:",g):d[l]=(f,...n)=>r.add(f)&&u().then(()=>d[l](f,...n))})
-      ({key: "AIzaSyAAnw3SFonUWFm5fXYhCEgiQQsoFS0BWN8", v: "weekly"});
+((g) => {
+  var h,
+    a,
+    k,
+    p = "The Google Maps JavaScript API",
+    c = "google",
+    l = "importLibrary",
+    q = "__ib__",
+    m = document,
+    b = window;
+  b = b[c] || (b[c] = {});
+  var d = b.maps || (b.maps = {}),
+    r = new Set(),
+    e = new URLSearchParams(),
+    u = () =>
+      h ||
+      (h = new Promise(async (f, n) => {
+        await (a = m.createElement("script"));
+        e.set("libraries", [...r] + "");
+        for (k in g)
+          e.set(
+            k.replace(/[A-Z]/g, (t) => "_" + t[0].toLowerCase()),
+            g[k]
+          );
+        e.set("callback", c + ".maps." + q);
+        a.src = `https://maps.${c}apis.com/maps/api/js?` + e;
+        d[q] = f;
+        a.onerror = () => (h = n(Error(p + " could not load.")));
+        a.nonce = m.querySelector("script[nonce]")?.nonce || "";
+        m.head.append(a);
+      }));
+  d[l]
+    ? console.warn(p + " only loads once. Ignoring:", g)
+    : (d[l] = (f, ...n) => r.add(f) && u().then(() => d[l](f, ...n)));
+})({ key: "AIzaSyAAnw3SFonUWFm5fXYhCEgiQQsoFS0BWN8", v: "weekly" });
 /**
-    * @license
-    * Copyright 2019 Google LLC. All Rights Reserved.
-    * SPDX-License-Identifier: Apache-2.0
-    */
-    // Initialize and add the map
-    let map;
-    async function initMap() {
-      // The location of Uluru
-      const position = { lat: 43.53366, lng: -7.04029 };
-      // Request needed libraries.
-      //@ts-ignore
-      const { Map } = await google.maps.importLibrary("maps");
-      const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
-      map = new Map(document.getElementById("map"), {
-        zoom: 12, // Set the default zoom level here
-        center: position,
-        mapId: "DEMO_MAP_ID",
-      });
-      const marker = new AdvancedMarkerElement({
-        map: map,
-        position: position,
-        title: "Ribadeo",
-      });
-    }
-    initMap();
+ * @license
+ * Copyright 2019 Google LLC. All Rights Reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ */
+// Initialize and add the map
+let map;
+async function initMap() {
+  // The location of Uluru
+  const position = { lat: 43.53366, lng: -7.04029 };
+  // Request needed libraries.
+  //@ts-ignore
+  const { Map } = await google.maps.importLibrary("maps");
+  const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+  map = new Map(document.getElementById("map"), {
+    zoom: 12, // Set the default zoom level here
+    center: position,
+    mapId: "DEMO_MAP_ID",
+  });
+  const marker = new AdvancedMarkerElement({
+    map: map,
+    position: position,
+    title: "Ribadeo",
+  });
+}
+initMap();

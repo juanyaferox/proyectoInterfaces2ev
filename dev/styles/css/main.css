@@ -834,7 +834,7 @@ header nav ul li:hover ul.submenu {
   flex-direction: column;
 }
 
-.modal {
+.modalRegister {
   display: none;
   position: fixed;
   top: 0;
@@ -844,39 +844,72 @@ header nav ul li:hover ul.submenu {
   background: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
-.modal.show {
+.modalRegister.show {
   display: flex;
 }
-.modal .modal-content {
+.modalRegister .modalRegister-content {
   background: white;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
 }
-.modal .modal-content form {
+.modalRegister .modalRegister-content form {
   display: flex;
   flex-direction: column;
 }
-.modal .modal-content form label {
+.modalRegister .modalRegister-content form label {
   margin: 10px 0 5px;
 }
-.modal .modal-content form input {
+.modalRegister .modalRegister-content form input {
   padding: 5px;
   margin-bottom: 10px;
 }
-.modal .modal-content form input[type=submit] {
+.modalRegister .modalRegister-content form input[type=submit] {
   background-color: #6b8399;
   color: white;
   border: none;
   cursor: pointer;
 }
-.modal .modal-content form input[type=submit]:hover {
+.modalRegister .modalRegister-content form input[type=submit]:hover {
   background-color: #42505e;
 }
-.modal .modal-content .close {
+.modalRegister .modalRegister-content .close {
   float: right;
   cursor: pointer;
+}
+
+.flip-card {
+  perspective: 1000px;
+  width: 200px;
+  height: 300px;
+}
+.flip-card .card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flip-card .card-inner:hover {
+  transform: rotateY(180deg);
+}
+.flip-card .card-front, .flip-card .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border: 2px solid #6b8399;
+  border-radius: 5px;
+}
+.flip-card .card-front {
+  background-color: rgba(75, 75, 75, 0.2666666667);
+}
+.flip-card .card-back {
+  background-color: #6b8399;
+  color: white;
+  transform: rotateY(180deg);
 }
 
 :root {
