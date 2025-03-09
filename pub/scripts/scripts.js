@@ -109,15 +109,22 @@ function loadCSS(href) {
 }
 
 /**
- * Función para cargar el head, header y el footer
+ * Función para cargar el head, header, el footer y el boton de hamburguesa
  */
 document.addEventListener("DOMContentLoaded", function () {
 
-  // Cargar el header
+  // Cargar el header y el boton de hamburguesa
   fetch("../html/header.html")
     .then((response) => response.text())
     .then((data) => {
       document.querySelector("header").innerHTML = data;
+
+      const menuToggle = document.querySelector('.menu-toggle');
+      if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+        document.querySelector('nav ul').classList.toggle('show');
+        });
+      }
     });
 
   // Cargar el head
@@ -213,7 +220,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
     });
-
+    
 });
 
 /** API de Google para el google Maps de como llegar */

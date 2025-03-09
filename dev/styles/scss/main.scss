@@ -1,3 +1,4 @@
+@use '../css/normalize';
 @use "abstracts/variables";
 @use "base/global";
 @use "components/footer";
@@ -6,6 +7,7 @@
 @use "components/index";
 @use "components/places";
 @use "components/restaurants";
+@use "components/modal";
 
 :root {
     --secondary-color: #fff;

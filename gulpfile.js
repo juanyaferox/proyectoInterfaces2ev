@@ -78,7 +78,7 @@ gulp.task('html', function() {
 // ==================================================
 gulp.task('images', function() {
   return gulp.src('dev/sources/**/*')
-    .pipe(imagemin())  // tuve que hacer downgrade a la version para utilizarlo
+    //.pipe(imagemin())  // funciona mal con svg
     .pipe(gulp.dest('pub/sources'));
 });
 // ==================================================

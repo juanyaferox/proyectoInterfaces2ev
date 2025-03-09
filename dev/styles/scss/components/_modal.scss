@@ -1,0 +1,52 @@
+// components/_modal.scss
+@use "../abstracts/variables" as global;
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+
+  &.show {
+    display: flex;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+
+    form {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin: 10px 0 5px;
+      }
+      input {
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+      input[type="submit"] {
+        background-color: global.$primary-color;
+        color: white;
+        border: none;
+        cursor: pointer;
+        &:hover {
+          background-color: global.$primary-color-dark;
+        }
+      }
+    }
+
+    .close {
+      float: right;
+      cursor: pointer;
+    }
+  }
+}
