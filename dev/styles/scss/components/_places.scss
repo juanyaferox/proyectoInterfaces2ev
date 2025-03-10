@@ -1,18 +1,16 @@
-// components/_places.scss
 @use "../abstracts/variables" as global;
 
 .place h2 {
-  border-left: 5px solid global.$primary-color;
-  padding-left: 15px;
+  border-left: global.$border-width-medium solid global.$primary-color;
+  padding-left: global.$spacing-15;
 }
 
-/* Contenedor de las imágenes */
 .image-container {
   position: relative;
-  width: 100%;
+  width: global.$width-full;
   height: 200px;
   overflow: hidden;
-  border-radius: 10px;
+  border-radius: global.$border-radius-medium;
 
   img {
     position: absolute;
@@ -29,29 +27,30 @@
   }
 }
 
-/* Estilo de las flechas */
 .arrow {
   position: absolute;
-  top: 50%;
+  top: global.$width-half;
   transform: translateY(-50%);
-  background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  background-color: global.$color-overlay-light;
+  color: global.$color-white;
   border: none;
-  padding: 10px;
+  padding: global.$spacing-10;
   cursor: pointer;
 
+  &.left,
+  &.right {
+    border-radius: global.$border-radius-small;
+    transition: global.$transition-transform;
+  }
+
   &.left {
-    left: 5px;
+    left: global.$spacing-5;
     z-index: 2;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
   }
 
   &.right {
-    right: 5px;
+    right: global.$spacing-5;
     z-index: 2;
-    border-radius: 5px;
-    transition: transform 0.3s ease;
   }
 
   &:hover {
@@ -59,7 +58,6 @@
   }
 }
 
-/* Estilos para el cambio de imagen */
 .image-container img.active {
   opacity: 1;
   z-index: 1;
@@ -68,7 +66,6 @@
   z-index: 0;
 }
 
-/* Animación opcional */
 @keyframes easeIn {
   0% {
     transform: scale(1.2);
@@ -76,15 +73,14 @@
   }
 }
 
-/* Estilos para los modales de las imágenes */
 .modal {
   display: none;
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  width: global.$width-full;
+  height: global.$width-full;
+  background: global.$color-overlay-dark;
 
   &.show {
     display: flex;
@@ -111,7 +107,7 @@
     position: absolute;
     top: 50px;
     right: 50px;
-    color: white;
+    color: global.$color-white;
     font-size: 30px;
     cursor: pointer;
   }

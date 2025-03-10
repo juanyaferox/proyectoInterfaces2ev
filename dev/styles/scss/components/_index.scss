@@ -1,18 +1,17 @@
-// components/_index.scss
 @use "../abstracts/variables" as global;
 
 /** Texto sobre ribadeo **/
 .discoverRib,
 .discoverRib2 {
   display: flex;
-  border-left: 5px solid global.$primary-color;
-  border-right: 5px solid global.$primary-color;
-  padding-left: 15px;
-  padding-right: 15px;
+  border-left: global.$border-width-medium solid global.$primary-color;
+  border-right: global.$border-width-medium solid global.$primary-color;
+  padding-left: global.$spacing-15;
+  padding-right: global.$spacing-15;
   flex-direction: column;
   align-items: center;
-  font-size: xx-large;
-  margin-bottom: 1rem;
+  font-size: global.$font-size-xx-large;
+  margin-bottom: global.$spacing-1rem;
 }
 
 .discoverRib2 {
@@ -41,7 +40,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
+  gap: global.$spacing-2rem;
   margin-right: -10%;
   margin-left: -10%;
 }
@@ -59,8 +58,8 @@
 .gridReasons div {
   color: global.$primary-color;
   background-color: global.$color-grid;
-  padding: 20px;
-  border: 2px solid global.$primary-color;
+  padding: global.$spacing-20;
+  border: global.$border-width-small solid global.$primary-color;
   border-radius: 2%;
   text-align: start;
 
@@ -129,61 +128,64 @@
 
 /** Formulario **/
 .contactForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  border: 2px solid global.$primary-color;
-  border-radius: 5px;
-  background-color: global.$color-grid;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 50%;
-  margin: 2rem auto;
-}
+  @media (max-width: 1028px) {
+    .contactForm {
+      width: 80%;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: global.$spacing-2rem;
+    border: global.$border-width-small solid global.$primary-color;
+    border-radius: global.$border-radius-small;
+    background-color: global.$color-grid;
+    box-shadow: global.$shadow-light;
+    width: global.$width-half;
+    margin: global.$spacing-2rem auto;
 
-.contactForm h2 {
-  font-size: 2rem;
-  color: global.$primary-color;
-  margin-bottom: 1rem;
-}
+    @media (max-width: 1028px) {
+      width: 80%;
+    }
 
-.contactForm label {
-  font-size: 1rem;
-  color: global.$primary-color;
-}
+    h2 {
+      font-size: global.$spacing-2rem;
+      color: global.$primary-color;
+      margin-bottom: global.$spacing-1rem;
+    }
 
-.contactForm input[type="text"],
-.contactForm input[type="email"],
-.contactForm input[type="tel"],
-.contactForm select,
-.contactForm textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid global.$primary-color;
-  border-radius: 5px;
-}
+    label {
+      font-size: 1rem;
+      color: global.$primary-color;
+    }
 
-.contactForm input[type="radio"] {
-  margin-right: 0.5rem;
-}
+    input[type="text"],
+    nput[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
+      width: 100%;
+      padding: global.$spacing-5;
+      margin-bottom: global.$spacing-1rem;
+      border: global.$border-width-small solid global.$primary-color;
+      border-radius: 5px;
+    }
 
-.contactForm input[type="submit"] {
-  background-color: global.$primary-color;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+    input[type="radio"] {
+      margin-right: 0.5rem;
+    }
 
-.contactForm input[type="submit"]:hover {
-  background-color: global.$primary-color-dark;
-}
+    input[type="submit"] {
+      background-color: global.$primary-color;
+      color: global.$color-white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: global.$border-radius-small;
+      cursor: pointer;
+      transition: global.$transition-background;
 
-@media (max-width: 1028px) {
-  .contactForm {
-    width: 80%;
+      &:hover {
+        background-color: global.$primary-color-dark;
+      }
+    }
   }
 }

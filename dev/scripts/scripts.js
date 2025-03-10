@@ -116,10 +116,12 @@ function loadCSS(href) {
 }
 
 /**
- * Función para cargar el head, header, el footer y el boton de hamburguesa
+ * Función para cargar el head, header, el footer, el boton de hamburguesa y el modal de registro
  */
 document.addEventListener("DOMContentLoaded", function () {
+
   let modalContainer = null;
+  
   // Cargar el header y el boton de hamburguesa
   fetch("../html/header.html")
     .then((response) => response.text())

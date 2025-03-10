@@ -352,7 +352,7 @@ h1 {
   right: 20px;
   padding: 10px 20px;
   background-color: #6b8399;
-  color: white;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -394,6 +394,15 @@ header {
   font-family: "Funnel Display", sans-serif;
   color: #6b8399;
   position: relative;
+}
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    padding-right: 2%;
+    padding-left: 2%;
+  }
 }
 header p {
   color: #333;
@@ -506,20 +515,20 @@ header nav ul li:hover ul.submenu {
   header nav ul li ul.submenu {
     position: static;
     width: 100%;
+    display: none;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 0;
+  }
+  header nav ul li:hover ul.submenu {
+    display: flex;
+  }
+  header nav ul li ul.submenu li {
+    text-align: left;
   }
 }
 
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-    padding-right: 2%;
-    padding-left: 2%;
-  }
-}
 #map {
   height: 500px;
   width: 100%;
@@ -527,6 +536,13 @@ header nav ul li:hover ul.submenu {
   border-width: 5px;
   border-style: solid;
   border-radius: 10px;
+}
+
+.flip-card-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 40px;
+  gap: 20px;
 }
 
 /** Texto sobre ribadeo **/
@@ -653,71 +669,71 @@ header nav ul li:hover ul.submenu {
   }
 }
 /** Formulario **/
-.contactForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  border: 2px solid #6b8399;
-  border-radius: 5px;
-  background-color: rgba(75, 75, 75, 0.2666666667);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 50%;
-  margin: 2rem auto;
-}
-
-.contactForm h2 {
-  font-size: 2rem;
-  color: #6b8399;
-  margin-bottom: 1rem;
-}
-
-.contactForm label {
-  font-size: 1rem;
-  color: #6b8399;
-}
-
-.contactForm input[type=text],
-.contactForm input[type=email],
-.contactForm input[type=tel],
-.contactForm select,
-.contactForm textarea {
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #6b8399;
-  border-radius: 5px;
-}
-
-.contactForm input[type=radio] {
-  margin-right: 0.5rem;
-}
-
-.contactForm input[type=submit] {
-  background-color: #6b8399;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.contactForm input[type=submit]:hover {
-  background-color: #42505e;
-}
-
 @media (max-width: 1028px) {
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border: 2px solid #6b8399;
+    border-radius: 5px;
+    background-color: rgba(75, 75, 75, 0.2666666667);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 50%;
+    margin: 2rem auto;
+  }
+  .contactForm .contactForm {
+    width: 80%;
+  }
+}
+@media (max-width: 1028px) and (max-width: 1028px) {
   .contactForm {
     width: 80%;
   }
 }
+@media (max-width: 1028px) {
+  .contactForm h2 {
+    font-size: 2rem;
+    color: #6b8399;
+    margin-bottom: 1rem;
+  }
+  .contactForm label {
+    font-size: 1rem;
+    color: #6b8399;
+  }
+  .contactForm input[type=text],
+  .contactForm nput[type=email],
+  .contactForm input[type=tel],
+  .contactForm select,
+  .contactForm textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 1rem;
+    border: 2px solid #6b8399;
+    border-radius: 5px;
+  }
+  .contactForm input[type=radio] {
+    margin-right: 0.5rem;
+  }
+  .contactForm input[type=submit] {
+    background-color: #6b8399;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  .contactForm input[type=submit]:hover {
+    background-color: #42505e;
+  }
+}
+
 .place h2 {
   border-left: 5px solid #6b8399;
   padding-left: 15px;
 }
 
-/* Contenedor de las imágenes */
 .image-container {
   position: relative;
   width: 100%;
@@ -738,34 +754,32 @@ header nav ul li:hover ul.submenu {
   transform: scale(1.05);
 }
 
-/* Estilo de las flechas */
 .arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   background-color: rgba(0, 0, 0, 0.5);
-  color: white;
+  color: #fff;
   border: none;
   padding: 10px;
   cursor: pointer;
 }
+.arrow.left, .arrow.right {
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
 .arrow.left {
   left: 5px;
   z-index: 2;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
 }
 .arrow.right {
   right: 5px;
   z-index: 2;
-  border-radius: 5px;
-  transition: transform 0.3s ease;
 }
 .arrow:hover {
   transform: translateY(-50%) scale(1.2);
 }
 
-/* Estilos para el cambio de imagen */
 .image-container img.active {
   opacity: 1;
   z-index: 1;
@@ -775,14 +789,12 @@ header nav ul li:hover ul.submenu {
   z-index: 0;
 }
 
-/* Animación opcional */
 @keyframes easeIn {
   0% {
     transform: scale(1.2);
     opacity: 1;
   }
 }
-/* Estilos para los modales de las imágenes */
 .modal {
   display: none;
   position: fixed;
@@ -816,7 +828,7 @@ header nav ul li:hover ul.submenu {
   position: absolute;
   top: 50px;
   right: 50px;
-  color: white;
+  color: #fff;
   font-size: 30px;
   cursor: pointer;
 }
@@ -850,7 +862,7 @@ header nav ul li:hover ul.submenu {
   display: flex;
 }
 .modalRegister .modalRegister-content {
-  background: white;
+  background: #fff;
   padding: 20px;
   border-radius: 5px;
   width: 300px;
@@ -868,7 +880,7 @@ header nav ul li:hover ul.submenu {
 }
 .modalRegister .modalRegister-content form input[type=submit] {
   background-color: #6b8399;
-  color: white;
+  color: #fff;
   border: none;
   cursor: pointer;
 }
@@ -881,35 +893,88 @@ header nav ul li:hover ul.submenu {
 }
 
 .flip-card {
-  perspective: 1000px;
   width: 200px;
   height: 300px;
+  perspective: 1000px;
 }
 .flip-card .card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 0.6s;
   transform-style: preserve-3d;
+  transition: transform 0.6s ease;
 }
 .flip-card .card-inner:hover {
   transform: rotateY(180deg);
 }
-.flip-card .card-front, .flip-card .card-back {
+.flip-card .card-inner .card-front,
+.flip-card .card-inner .card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border: 2px solid #6b8399;
-  border-radius: 5px;
+  border-radius: 10px;
+  border: 2px solid #6b8399; /* Borde añadido */
+  box-sizing: border-box;
 }
-.flip-card .card-front {
-  background-color: rgba(75, 75, 75, 0.2666666667);
-}
-.flip-card .card-back {
+.flip-card .card-inner .card-front {
   background-color: #6b8399;
-  color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.flip-card .card-inner .card-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.flip-card .card-inner .card-front .text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 24px;
+}
+.flip-card .card-inner .card-back {
+  background-color: rgba(126, 126, 126, 0.2666666667);
+  color: #6b8399;
   transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  padding: 10px;
+}
+@media (max-width: 768px) {
+  .flip-card {
+    height: auto; /* Permitimos altura flexible para contenido */
+  }
+  .flip-card .card-inner {
+    height: 300px; /* Mantenemos una altura fija para la animación */
+  }
+  .flip-card .card-inner .card-front {
+    position: absolute; /* Mantenemos absoluto para el giro */
+  }
+  .flip-card .card-inner .card-front .text {
+    position: relative;
+    bottom: auto; /* Quitamos bottom: 0 para que no se superponga */
+    background: none; /* Sin fondo en móvil */
+    color: #6b8399; /* Color visible */
+    padding: 10px 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .flip-card .card-inner .card-back {
+    height: 100%;
+    font-size: 16px;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
 :root {

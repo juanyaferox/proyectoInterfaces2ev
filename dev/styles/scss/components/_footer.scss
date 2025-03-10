@@ -1,19 +1,18 @@
-// components/_footer.scss
 @use "../abstracts/variables" as global;
 
 /** Botón de cambiar de tema **/
 #fixedButton {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  padding: 10px 20px;
+  bottom: global.$spacing-20;
+  right: global.$spacing-20;
+  padding: global.$spacing-10 global.$spacing-20;
   background-color: global.$primary-color;
-  color: white;
+  color: global.$color-white;
   border: none;
-  border-radius: 5px;
+  border-radius: global.$border-radius-small;
   cursor: pointer;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
+  box-shadow: global.$shadow-button;
+  transition: global.$transition-background;
   z-index: 2;
 
   &:hover {
@@ -30,11 +29,11 @@ footer {
   background-color: global.$primary-color;
   color: global.$secondary-color;
   text-align: center;
-  padding: 10px;
-  width: 100%;
+  padding: global.$spacing-10;
+  width: global.$width-full;
   overflow-x: hidden;
 
   p {
-    padding-left: 2rem;
+    padding-left: global.$spacing-2rem;
   }
 }

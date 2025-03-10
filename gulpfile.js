@@ -19,7 +19,7 @@ const replace = require('gulp-replace');
 // desarrollo: true  => sin empaquetar (más legible)
 // desarrollo: false => empaquetado y optimizado
 // ==================================================
-const desarrollo = true; // Cambia a true para desarrollo
+const desarrollo = false; // Cambia a true para desarrollo
 
 // ==================================================
 // Tareas Sass
@@ -77,9 +77,10 @@ gulp.task('html', function() {
 // Utiliza gulp-imagemin para comprimir las imágenes al publicarlas
 // ==================================================
 gulp.task('images', function() {
-  return gulp.src('dev/sources/**/*')
-    //.pipe(imagemin())  // funciona mal con svg
+  return gulp.src('dev/sources/**/*', {encoding: false})
+    // .pipe(gulp.imagemin())
     .pipe(gulp.dest('pub/sources'));
+
 });
 // ==================================================
 // Tarea default

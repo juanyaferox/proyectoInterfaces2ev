@@ -11,17 +11,17 @@ body {
 }
 
 main {
-  padding: 20px;
-  padding-top: 2rem;
+  padding: global.$spacing-20;
+  padding-top: global.$spacing-2rem;
   margin-left: 20%;
   margin-right: 20%;
-  font-size: larger;
+  font-size: global.$font-size-larger;
   margin-bottom: 5rem;
 }
 
 h1 {
-  border-left: 5px solid global.$primary-color;
-  padding-left: 15px;
+  border-left: global.$border-width-medium solid global.$primary-color;
+  padding-left: global.$spacing-15;
 }
 
 @media (max-width: 768px) {

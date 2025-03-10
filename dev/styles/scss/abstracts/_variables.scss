@@ -1,7 +1,44 @@
+@use "sass:color";
+
+// Colores
 $primary-color: #6b8399;
 $primary-color-dark: #42505e;
 $secondary-color: #333;
 $secondary-color-dark: #222;
 $color-grid: #4b4b4b44;
+$color-white: #fff;
+$color-black: #000;
+$color-overlay-light: rgba(0, 0, 0, 0.5);
+$color-overlay-dark: rgba(0, 0, 0, 0.8);
+
+// Fuentes
 $font-family: 'Roboto', sans-serif;
 $font-family-alt: "Funnel Display", sans-serif;
+$font-size-xx-large: xx-large;
+$font-size-larger: larger;
+$font-size-24: 24px;
+$font-size-16: 16px;
+
+// Espaciados y tamaños
+$spacing-5: 5px;
+$spacing-10: 10px;
+$spacing-15: 15px;
+$spacing-20: 20px;
+$spacing-1rem: 1rem;
+$spacing-2rem: 2rem;
+$width-full: 100%;
+$width-half: 50%;
+
+// Bordes
+$border-radius-small: 5px;
+$border-radius-medium: 10px;
+$border-width-small: 2px;
+$border-width-medium: 5px;
+
+// Transiciones
+$transition-transform: transform 0.3s ease;
+$transition-background: background-color 0.3s ease;
+
+// Sombras
+$shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
+$shadow-button: 0 4px 6px rgba(0, 0, 0, 0.1);
