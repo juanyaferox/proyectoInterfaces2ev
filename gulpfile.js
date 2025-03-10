@@ -29,7 +29,7 @@ gulp.task('sass', function() {
   return gulp.src('dev/styles/scss/**/*.scss')
     .pipe(sassCompiler().on('error', sassCompiler.logError))
     .pipe(gulpIf(!desarrollo, purgecss({
-      content: ['dev/**/*.html']
+      content: ['dev/**/*.html', 'dev/**/*.js']
     })))
     .pipe(gulpIf(!desarrollo, autoprefixer({ cascade:false }))) // CUANTO POR CULO ME DIO ESTO
     .pipe(gulpIf(!desarrollo, cleanCSS()))
