@@ -65,7 +65,7 @@ gulp.task('js', function() {
 // ==================================================
 gulp.task('html', function() {
   return gulp.src('dev/**/*.html')
-    .pipe(replace(/href="\.\.\/styles\/css\/.*\.css"/g, 'href="/pub/css/main.css"'))
+    .pipe(replace(/href="\.\.\/styles\/css\/.*\.css"/g, 'href="../css/main.css"'))
     .pipe(gulpIf(!desarrollo, htmlmin({
       collapseWhitespace: true,
       removeComments: true
